@@ -28,7 +28,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55N-l0-My1">
-                                            <rect key="frame" x="98" y="11" width="215" height="21"/>
+                                            <rect key="frame" x="98" y="11" width="296" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -39,6 +39,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="55N-l0-My1" id="n2o-GK-xKm"/>
                                     <outlet property="photoImageView" destination="d0f-13-JUo" id="Cyt-OO-7z1"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="yHJ-6a-bYx"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -57,18 +58,18 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMt-VQ-nMR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245" y="127"/>
+            <point key="canvasLocation" x="244.92753623188409" y="126.5625"/>
         </scene>
         <!--New Film-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="FilmViewController" customModule="FilmNotes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="i6d-7l-oLV">
-                                <rect key="frame" x="20" y="76" width="374" height="362"/>
+                                <rect key="frame" x="20" y="108" width="374" height="362"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the name of the Film." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2NF-ti-TCb">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
@@ -162,9 +163,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSC-vB-sRi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="126.5625"/>
+            <point key="canvasLocation" x="1094" y="-230"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="yHJ-6a-bYx"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="noFilm" width="512" height="512"/>
     </resources>

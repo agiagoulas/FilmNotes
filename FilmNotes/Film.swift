@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class Film {
     
@@ -14,16 +15,18 @@ class Film {
     var name: String
     var photo: UIImage?
     
+    // MARK: Archiving Path
+    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("films")
+    
     // MARK: Initialization
     init?(name: String, photo: UIImage?) {
-        
         guard !name.isEmpty else {
             return nil
         }
         
         self.name = name
         self.photo = photo
-        
     }
     
 }

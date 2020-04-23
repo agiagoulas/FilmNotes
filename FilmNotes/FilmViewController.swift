@@ -25,6 +25,13 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         // Handle user input
         filmTextField.delegate = self;
         
+        // set up views when editing existing film
+        if let film = film {
+            navigationItem.title = film.name
+            filmTextField.text = film.name
+            filmImageView.image = film.photo
+        }
+        
         // enable save button only if text field has valid film name
         updateSaveButtonState()
     }
@@ -62,7 +69,16 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     // MARK: Navigation
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        // view controller needs to be dismissed in 2 different ways
+        let isPresentingInAddFilmMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddFilmMode {
+            dismiss(animated: true, completion: nil)
+        } else if let owningNavigationController = navigationController {
+            owningNavigationController.popViewController(animated: true)
+        } else {
+            fatalError("The FilmViewController is not inside navigation controller")
+        }
     }
     
     // configuring view controller before its presented

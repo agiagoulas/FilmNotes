@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import os.log
+
 
 class FilmTableViewController: UITableViewController {
 
@@ -17,7 +19,9 @@ class FilmTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       // load sample data
+        // use edit button item provided by table view controller
+        navigationItem.leftBarButtonItem = editButtonItem
+        
         loadSampleFilms()
     }
 
@@ -49,25 +53,26 @@ class FilmTableViewController: UITableViewController {
     }
     
 
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            films.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
+    
 
     /*
     // Override to support rearranging the table view.
@@ -84,27 +89,57 @@ class FilmTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+        case "AddItem":
+            os_log("Adding a new film.", log: OSLog.default, type: .debug)
+            
+        case "ShowDetail":
+            guard let filmDetailViewController = segue.destination as? FilmViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedFilmCell = sender as? FilmTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedFilmCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedFilm = films[indexPath.row]
+            filmDetailViewController.film = selectedFilm
+        
+        default:
+            fatalError("Unexpected seque identifier; \(String(describing: segue.identifier))")
+        
+        }
+        
     }
-    */
+    
     
     // MARK: Actions
     
     @IBAction func unwindToFilmList(sender: UIStoryboardSegue) {
         
         if let sourceViewController = sender.source as? FilmViewController, let film = sourceViewController.film {
-            
-            // add a new meal
-            let newIndexPath = IndexPath(row: films.count, section: 0)
-            films.append(film)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
-            
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // update existing film
+                films[selectedIndexPath.row] = film
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                // add new film
+                let newIndexPath = IndexPath(row: films.count, section: 0)
+                films.append(film)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
         }
         
     }
@@ -130,8 +165,6 @@ class FilmTableViewController: UITableViewController {
         }
         
         films += [film1, film2, film3]
-        
     }
-    
 
 }
