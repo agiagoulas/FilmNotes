@@ -100,8 +100,17 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Film" id="fck-Bl-McF">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="7cr-H9-O5d"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="S8G-NE-si0"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="7cr-H9-O5d">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="ugL-KP-kFY"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="S8G-NE-si0">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="vmN-ST-U2T"/>
+                                <segue destination="far-IV-5Oi" kind="unwind" unwindAction="unwindToFilmListWithSender:" id="ORC-Cl-V8g"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="filmImageView" destination="0dY-Bu-jCm" id="MQk-Il-JwC"/>
@@ -110,6 +119,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="far-IV-5Oi" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="00N-sK-j9A">
                     <connections>
                         <action selector="selectImageFromLibrary:" destination="BYZ-38-t0r" id="eFo-Lf-xxE"/>

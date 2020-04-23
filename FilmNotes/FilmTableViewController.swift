@@ -94,6 +94,22 @@ class FilmTableViewController: UITableViewController {
     }
     */
     
+    // MARK: Actions
+    
+    @IBAction func unwindToFilmList(sender: UIStoryboardSegue) {
+        
+        if let sourceViewController = sender.source as? FilmViewController, let film = sourceViewController.film {
+            
+            // add a new meal
+            let newIndexPath = IndexPath(row: films.count, section: 0)
+            films.append(film)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            
+        }
+        
+    }
+    
+    
     // MARK: Private Methods
     
     private func loadSampleFilms() {

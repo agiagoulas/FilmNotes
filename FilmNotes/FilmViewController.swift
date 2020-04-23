@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -23,6 +24,9 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
 
         // Handle user input
         filmTextField.delegate = self;
+        
+        // enable save button only if text field has valid film name
+        updateSaveButtonState()
     }
     
     // MARK: UITextFieldDelegate
@@ -33,7 +37,14 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disable save button while editing
+        saveButton.isEnabled = false
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
+        updateSaveButtonState()
+        navigationItem.title = textField.text
     }
 
     // MARK: UIImagePickerControllerDelegate
@@ -49,6 +60,29 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: Navigation
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // configuring view controller before its presented
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        // configure destination view controller only when save button is pressed
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log:OSLog.default, type: .debug)
+            return
+        }
+        
+        let name = filmTextField.text ?? ""
+        let photo = filmImageView.image
+
+        // set film to be passed to FilmTableViewController after unwind segue
+        film = Film(name: name, photo: photo)
+        
+    }
+    
     // MARK: Actions
     @IBAction func selectImageFromLibrary(_ sender: UITapGestureRecognizer) {
         filmTextField.resignFirstResponder()
@@ -60,6 +94,13 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         imagePickerController.delegate = self
         
         present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    // MARK: Private Methods
+    private func updateSaveButtonState() {
+        // disable save button if text is empty
+        let text = filmTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
     
 
