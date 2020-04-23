@@ -60,5 +60,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>Privacy - Photo Library Usage Decription</key>
+	<string>Allows you to add photos of your films.</string>
 </dict>
 </plist>
