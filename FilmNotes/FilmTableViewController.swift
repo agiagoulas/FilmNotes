@@ -22,7 +22,13 @@ class FilmTableViewController: UITableViewController {
         // use edit button item provided by table view controller
         navigationItem.leftBarButtonItem = editButtonItem
         
-        loadSampleFilms()
+        // Load any saved films, otherwise load sample data.
+        if let savedFilms = loadFilms(){
+            films += savedFilms
+        }else {
+            // Load the sample data
+            loadSampleFilms()
+        }
     }
 
     // MARK: - Table view data source
@@ -66,6 +72,7 @@ class FilmTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             films.remove(at: indexPath.row)
+            saveFilms()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -140,6 +147,8 @@ class FilmTableViewController: UITableViewController {
                 films.append(film)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
+            
+            saveFilms()
         }
         
     }
@@ -167,4 +176,20 @@ class FilmTableViewController: UITableViewController {
         films += [film1, film2, film3]
     }
 
+    // save film list
+    private func saveFilms() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(films, toFile: Film.ArchiveURL.path)
+        if isSuccessfulSave{
+            os_log("Films successfully saved.", log: OSLog.default, type: .debug)
+        }else {
+            os_log("Failed to save films...", log: OSLog.default, type: .debug)
+        }
+    }
+    
+    //To load the meal list
+    private func loadFilms() -> [Film]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Film.ArchiveURL.path) as? [Film]
+    }
+    
+    
 }
