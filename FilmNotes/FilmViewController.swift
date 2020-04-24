@@ -69,8 +69,8 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         datePickerAccessory?.frame = dateFrame!
         datePickerAccessory?.items = [dateFlexSpace, dateDoneButton]
                
-        // Handle film name input
-        filmTextField.delegate = self
+        // Handle Event name input
+        eventTextField.delegate = self
         
         // Handle iso input
         isoTextField.inputAccessoryView = pickerAccessory
@@ -91,7 +91,7 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             notesTextField.text = film.notes
         }
         
-        // enable save button only if text field has valid film name
+        // enable save button only if text field has valid film event
         updateSaveButtonState()
     }
     
@@ -207,7 +207,7 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     // MARK: Private Methods
     private func updateSaveButtonState() {
         // disable save button if text is empty
-        let text = filmTextField.text ?? ""
+        let text = eventTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
     }
     
