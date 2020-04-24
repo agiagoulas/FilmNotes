@@ -17,6 +17,10 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var isoTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var eventTextField: UITextField!
+    @IBOutlet weak var cameraTextField: UITextField!
+    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var notesTextField: UITextField!
     
     // Define iso picker
     let isoPicker = UIPickerView()
@@ -76,9 +80,15 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
         // set up views when editing existing film
         if let film = film {
-            navigationItem.title = film.name
+            navigationItem.title = film.event
             filmTextField.text = film.name
             filmImageView.image = film.photo
+            isoTextField.text = film.iso
+            eventTextField.text = film.event
+            cameraTextField.text = film.camera
+            locationTextField.text = film.location
+            dateTextField.text = film.date
+            notesTextField.text = film.notes
         }
         
         // enable save button only if text field has valid film name
@@ -169,9 +179,15 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
         let name = filmTextField.text ?? ""
         let photo = filmImageView.image
+        let iso = isoTextField.text ?? ""
+        let date = dateTextField.text ?? ""
+        let event = eventTextField.text ?? ""
+        let camera = cameraTextField.text ?? ""
+        let location = locationTextField.text ?? ""
+        let notes = notesTextField.text ?? ""
 
         // set film to be passed to FilmTableViewController after unwind segue
-        film = Film(name: name, photo: photo)
+        film = Film(name: name, photo: photo, event: event, camera: camera, iso: iso, location: location, date: date, notes: notes)
         
     }
     

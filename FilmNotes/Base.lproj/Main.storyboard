@@ -7,28 +7,56 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Your saved Films-->
+        <!--Your saved Events on Film-->
         <scene sceneID="9Wh-b8-dc5">
             <objects>
                 <tableViewController id="NG8-Db-JJ5" customClass="FilmTableViewController" customModule="FilmNotes" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uas-KV-TIx">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uas-KV-TIx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilmTableViewCell" rowHeight="90" id="ILy-md-W5z" customClass="FilmTableViewCell" customModule="FilmNotes" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="90"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilmTableViewCell" rowHeight="120" id="ILy-md-W5z" customClass="FilmTableViewCell" customModule="FilmNotes" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ILy-md-W5z" id="HhQ-hW-nbj">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noFilm" translatesAutoresizingMaskIntoConstraints="NO" id="d0f-13-JUo">
-                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                            <rect key="frame" x="314" y="20" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55N-l0-My1">
-                                            <rect key="frame" x="98" y="11" width="296" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FilmLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55N-l0-My1">
+                                            <rect key="frame" x="20" y="34" width="184" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EventLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9t-OK-Vb4">
+                                            <rect key="frame" x="20" y="5" width="185" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LocationLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0me-GL-yV6">
+                                            <rect key="frame" x="20" y="63" width="184" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DateLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zig-mA-8lf">
+                                            <rect key="frame" x="20" y="92" width="185" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ISOLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1c7-1M-Oz0">
+                                            <rect key="frame" x="212" y="34" width="69" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -37,6 +65,10 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="dateLabel" destination="zig-mA-8lf" id="Ijp-TQ-M6y"/>
+                                    <outlet property="eventLabel" destination="s9t-OK-Vb4" id="Ce3-9h-oDR"/>
+                                    <outlet property="isoLabel" destination="1c7-1M-Oz0" id="9m3-pL-5jA"/>
+                                    <outlet property="locationLabel" destination="0me-GL-yV6" id="835-yN-W00"/>
                                     <outlet property="nameLabel" destination="55N-l0-My1" id="n2o-GK-xKm"/>
                                     <outlet property="photoImageView" destination="d0f-13-JUo" id="Cyt-OO-7z1"/>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="yHJ-6a-bYx"/>
@@ -48,7 +80,7 @@
                             <outlet property="delegate" destination="NG8-Db-JJ5" id="dyI-t9-1zW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Your saved Films" id="Gax-jF-8GM">
+                    <navigationItem key="navigationItem" title="Your saved Events on Film" id="Gax-jF-8GM">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="HbO-Kj-BQD">
                             <connections>
                                 <segue destination="erG-v6-Zg9" kind="presentation" identifier="AddItem" id="GUv-0H-LTu"/>
@@ -60,7 +92,7 @@
             </objects>
             <point key="canvasLocation" x="244.92753623188409" y="126.5625"/>
         </scene>
-        <!--New Film-->
+        <!--New Event-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="FilmViewController" customModule="FilmNotes" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,7 +101,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="i6d-7l-oLV">
-                                <rect key="frame" x="20" y="108" width="374" height="572"/>
+                                <rect key="frame" x="20" y="108" width="374" height="614"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the name of the Event." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sv5-mb-cCf">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
@@ -101,8 +133,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter optional Info." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h3s-lT-CNa">
+                                        <rect key="frame" x="0.0" y="252" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="noFilm" translatesAutoresizingMaskIntoConstraints="NO" id="0dY-Bu-jCm">
-                                        <rect key="frame" x="0.0" y="252" width="320" height="320"/>
+                                        <rect key="frame" x="0.0" y="294" width="320" height="320"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="0dY-Bu-jCm" secondAttribute="height" multiplier="1:1" id="i2G-TH-o58"/>
@@ -114,16 +151,25 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="RO9-J5-kfv" firstAttribute="leading" secondItem="i6d-7l-oLV" secondAttribute="leading" id="58I-hm-gZX"/>
+                                    <constraint firstAttribute="trailing" secondItem="h3s-lT-CNa" secondAttribute="trailing" id="5aT-ws-TX8"/>
+                                    <constraint firstItem="OYA-zP-l8L" firstAttribute="top" secondItem="2NF-ti-TCb" secondAttribute="bottom" constant="8" id="8bh-kx-IFY"/>
                                     <constraint firstItem="6DF-nK-gSk" firstAttribute="leading" secondItem="i6d-7l-oLV" secondAttribute="leading" id="KkZ-Cp-gXW"/>
+                                    <constraint firstItem="rVo-NP-V0B" firstAttribute="top" secondItem="RO9-J5-kfv" secondAttribute="bottom" constant="8" id="MBq-Jh-NLy"/>
                                     <constraint firstAttribute="trailing" secondItem="RO9-J5-kfv" secondAttribute="trailing" id="Oao-g9-fq6"/>
+                                    <constraint firstItem="RO9-J5-kfv" firstAttribute="top" secondItem="6DF-nK-gSk" secondAttribute="bottom" constant="8" id="QoM-rY-f5i"/>
                                     <constraint firstItem="rVo-NP-V0B" firstAttribute="leading" secondItem="i6d-7l-oLV" secondAttribute="leading" id="R7J-7t-bei"/>
+                                    <constraint firstItem="h3s-lT-CNa" firstAttribute="top" secondItem="rVo-NP-V0B" secondAttribute="bottom" constant="8" id="Z4V-dc-9yP"/>
                                     <constraint firstAttribute="trailing" secondItem="rVo-NP-V0B" secondAttribute="trailing" id="ZxX-nG-Jn4"/>
                                     <constraint firstItem="sv5-mb-cCf" firstAttribute="leading" secondItem="i6d-7l-oLV" secondAttribute="leading" id="dJY-aB-c9S"/>
                                     <constraint firstAttribute="trailing" secondItem="sv5-mb-cCf" secondAttribute="trailing" id="evN-fz-cwu"/>
                                     <constraint firstAttribute="trailing" secondItem="2NF-ti-TCb" secondAttribute="trailing" id="fEK-G9-vwX"/>
+                                    <constraint firstItem="h3s-lT-CNa" firstAttribute="top" secondItem="rVo-NP-V0B" secondAttribute="bottom" constant="8" id="fSM-eR-fkV"/>
+                                    <constraint firstItem="2NF-ti-TCb" firstAttribute="top" secondItem="sv5-mb-cCf" secondAttribute="bottom" constant="8" id="fhf-yK-ECw"/>
+                                    <constraint firstItem="h3s-lT-CNa" firstAttribute="leading" secondItem="i6d-7l-oLV" secondAttribute="leading" id="frc-5C-a3Q"/>
                                     <constraint firstAttribute="trailing" secondItem="6DF-nK-gSk" secondAttribute="trailing" id="fzg-o4-uOb"/>
                                     <constraint firstItem="OYA-zP-l8L" firstAttribute="leading" secondItem="i6d-7l-oLV" secondAttribute="leading" id="gJ4-Ft-vZO"/>
                                     <constraint firstAttribute="trailing" secondItem="OYA-zP-l8L" secondAttribute="trailing" id="qZO-DK-bkG"/>
+                                    <constraint firstItem="6DF-nK-gSk" firstAttribute="top" secondItem="OYA-zP-l8L" secondAttribute="bottom" constant="8" id="v4W-KU-0aT"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -135,7 +181,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Film" id="fck-Bl-McF">
+                    <navigationItem key="navigationItem" title="New Event" id="fck-Bl-McF">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="7cr-H9-O5d">
                             <connections>
                                 <action selector="cancel:" destination="BYZ-38-t0r" id="ugL-KP-kFY"/>
@@ -149,10 +195,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cameraTextField" destination="6DF-nK-gSk" id="qUd-a3-zDd"/>
                         <outlet property="dateTextField" destination="rVo-NP-V0B" id="f65-aY-RrG"/>
+                        <outlet property="eventTextField" destination="sv5-mb-cCf" id="Xqm-HJ-ys1"/>
                         <outlet property="filmImageView" destination="0dY-Bu-jCm" id="MQk-Il-JwC"/>
                         <outlet property="filmTextField" destination="2NF-ti-TCb" id="BZq-Fs-PYZ"/>
                         <outlet property="isoTextField" destination="OYA-zP-l8L" id="YOf-aw-0zj"/>
+                        <outlet property="locationTextField" destination="RO9-J5-kfv" id="Ol8-OU-eAl"/>
+                        <outlet property="notesTextField" destination="h3s-lT-CNa" id="m4A-8h-0qf"/>
                         <outlet property="saveButton" destination="S8G-NE-si0" id="oEQ-Ot-lpY"/>
                     </connections>
                 </viewController>

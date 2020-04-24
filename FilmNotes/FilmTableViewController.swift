@@ -54,6 +54,10 @@ class FilmTableViewController: UITableViewController {
 
         cell.nameLabel.text = film.name
         cell.photoImageView.image = film.photo
+        cell.eventLabel.text = film.event
+        cell.dateLabel.text = film.date
+        cell.isoLabel.text = "ISO " + film.iso
+        cell.locationLabel.text = film.location
         
         return cell
     }
@@ -159,21 +163,18 @@ class FilmTableViewController: UITableViewController {
     private func loadSampleFilms() {
         let photo1 = UIImage(named: "fomapan100")
         let photo2 = UIImage(named: "kodak-portra160")
-        let photo3 = UIImage(named: "ilford-hp5")
-     
-        guard let film1 = Film(name: "Fomapan 100", photo: photo1) else {
+        
+        guard let film1 = Film(name: "Fomapan 100", photo: photo1, event: "Omas Geburtstag", camera: "Leica R3", iso: "100", location: "Kornwestheim", date: "Friday, April 24, 2019", notes: "") else {
             fatalError("Unable to instantiate film1")
         }
         
-        guard let film2 = Film(name: "Kodak Portra 160", photo: photo2) else {
+        guard let film2 = Film(name: "Kodak Portra 160", photo: photo2, event: "YCUFest", camera: "Leica R8", iso: "200", location: "Frankfurt", date: "Tuesday, April 21, 2019", notes: "erst 6 Bilder verwendet") else {
             fatalError("Unable to instantiate film2")
         }
         
-        guard let film3 = Film(name: "Ilford HP5", photo: photo3) else {
-            fatalError("Unable to instantiate film3")
-        }
+
         
-        films += [film1, film2, film3]
+        films += [film1, film2]
     }
 
     // save film list
