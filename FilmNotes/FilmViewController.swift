@@ -15,24 +15,64 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet weak var filmTextField: UITextField!
     @IBOutlet weak var filmImageView: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var ISOPicker: UIPickerView!
+    @IBOutlet weak var isoTextField: UITextField!
+    @IBOutlet weak var dateTextField: UITextField!
     
-    var isoPickerData: [String] = [String]()
+    // Define iso picker
+    let isoPicker = UIPickerView()
+    let isoPickerData = [String](arrayLiteral: "12", "25", "50", "100", "125", "200", "400", "800", "1600", "3200", "6400")
     
+    // Define date picker
+    let datePicker = UIDatePicker()
     
+    // Define pickerAccessory
+    var pickerAccessory: UIToolbar?
+    let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(FilmViewController.doneBtnClicked(_:)))
+    let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) // flexible space
+    
+    // Define date pickerAccessory
+    var datePickerAccessory: UIToolbar?
+    let dateDoneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(FilmViewController.doneBtnDateClicked(_:)))
+    let dateFlexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) // flexible space
+
     // value either passed by "FilmTableViewController" in "prepare(for:sender)" or constructed as part of adding new film
     var film: Film?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setup ISO Picker
-        self.ISOPicker.delegate = self
-        self.ISOPicker.dataSource = self
-        isoPickerData = ["12", "25", "50", "100", "125", "200", "400", "800", "1600", "3200", "6400"]
+        // Setup iso picker
+        isoTextField.inputView = isoPicker
+        isoPicker.delegate = self
         
-        // Handle user input
-        filmTextField.delegate = self;
+        // Setup date picker
+        datePicker.datePickerMode = .date
+        dateTextField.inputView = datePicker
+        
+        // Create UIToolbar for inputAccessoryView
+        pickerAccessory = UIToolbar()
+        pickerAccessory?.autoresizingMask = .flexibleHeight
+        var frame = pickerAccessory?.frame
+        frame?.size.height = 44.0
+        pickerAccessory?.frame = frame!
+        pickerAccessory?.items = [flexSpace, doneButton]
+                
+        // Create Date UIToolbar for inputAccessoryView
+        datePickerAccessory = UIToolbar()
+        datePickerAccessory?.autoresizingMask = .flexibleHeight
+        var dateFrame = datePickerAccessory?.frame
+        dateFrame?.size.height = 44.0
+        datePickerAccessory?.frame = dateFrame!
+        datePickerAccessory?.items = [dateFlexSpace, dateDoneButton]
+               
+        // Handle film name input
+        filmTextField.delegate = self
+        
+        // Handle iso input
+        isoTextField.inputAccessoryView = pickerAccessory
+        
+        // Handle date input
+        dateTextField.inputAccessoryView = datePickerAccessory
         
         // set up views when editing existing film
         if let film = film {
@@ -49,7 +89,7 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     override func didReceiveMemoryWarning() {
            super.didReceiveMemoryWarning()
            // Dispose of any resources that can be recreated.
-       }
+    }
 
     // Number of columns of data
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -68,7 +108,7 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     // Capture picker view selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(isoPickerData[row])
+        isoTextField.text = isoPickerData[row]
     }
        
     
@@ -154,6 +194,22 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         let text = filmTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
     }
+    
+    // Dismiss picker
+    @objc func doneBtnClicked(_ button: UIBarButtonItem) {
+        // iso text field
+        isoTextField?.resignFirstResponder()
+    }
+    
+    // Dismiss date picker
+    @objc func doneBtnDateClicked(_ button: UIBarButtonItem) {
+        // date text field
+        let df = DateFormatter()
+        df.dateStyle = .full
+        dateTextField.text = df.string(from: datePicker.date)
+        dateTextField?.resignFirstResponder()
+    }
+    
     
 
 }
