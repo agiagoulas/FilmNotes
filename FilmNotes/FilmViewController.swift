@@ -22,6 +22,11 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var notesTextField: UITextField!
     
+    // Define film picker
+    let filmPicker = UIPickerView()
+    let filmPickerData = [String](arrayLiteral: "Adox CMS 20 II", "Adox SilverMax", "Agfa APX 100", "Agfa APX 400", "Bergger Pancro 400", "Cinestill BW", "Cinestill 50D", "Cinestill 800T", "CHM 100", "CHM 400", "Ferrania P30", "Fomapan 100", "Fomapan 200", "Fomapan 400", "Foma Retropan 320", "Fomapan R 100", "Fuji Neopan Acros 100", "Fuji Neopan 400CN", "FujiColor 100", "FujiColor Superia 400", "FujiColor C200", "FujiColor Superia X-tra 400", "FujiColor Pro 160NS", "FujIColor Pro 400H", "Fujichrome Velvia 50", "Fujichrome Velvia 100", "Fujichrome Velvia 100F", "Fujichrome Provia 100F", "Ilford Pan 100", "Ilford Pan 400", "Ilford Pan F", "Ilford FP4", "Ilford HP5", "Ilford Delta 100", "Ilford Delta 400", "Ilford Delta 3200", "Ilford XP2", "Ilford SFX200", "JCH 400", "Kentmere Pan 100", "Kentmere Pan 400", "Kodak Tri-X", "Kodak T-Max 100", "Kodak T-Max 400", "Kodak T-Max P3200", "Kodak ColorPlus 200", "Kodak Pro Image 100", "Kodak Gold 200", "Kodak Ultramax 400", "Kodak Ektar 100", "Kodak Portra 160", "Kodak Portra 400", "Kodak Portra 800", "Kodak Ektachrome E100", "KosmoFoto Mono", "Revolog Film", "Rollei RPX 25", "Rollei RPX 100", "Rollei RPX 400", "Rollei Ortho Plus", "Rollei Retro 80S", "Rollei SuperPan 200", "Rollei Retro 400S", "Rollei Infrared 400", "Rollei Blackbird", "other film")
+    
+    
     // Define iso picker
     let isoPicker = UIPickerView()
     let isoPickerData = [String](arrayLiteral: "12", "25", "50", "100", "125", "200", "400", "800", "1600", "3200", "6400")
@@ -44,6 +49,9 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Setup film picker
+        filmTextField.inputView = filmPicker
+        filmPicker.delegate = self
         
         // Setup iso picker
         isoTextField.inputView = isoPicker
@@ -71,6 +79,9 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
                
         // Handle Event name input
         eventTextField.delegate = self
+        
+        // Handle film input
+        filmTextField.inputAccessoryView = pickerAccessory
         
         // Handle iso input
         isoTextField.inputAccessoryView = pickerAccessory
@@ -108,17 +119,29 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
 
     // The number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return isoPickerData.count
+        if pickerView == filmPicker {
+            return filmPickerData.count
+        } else {
+            return isoPickerData.count
+        }
     }
        
     // The data to return fopr the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return isoPickerData[row]
+        if pickerView == filmPicker {
+            return filmPickerData[row]
+        } else {
+            return isoPickerData[row]
+        }
     }
     
     // Capture picker view selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        isoTextField.text = isoPickerData[row]
+        if pickerView == filmPicker {
+            filmTextField.text = filmPickerData[row]
+        } else {
+            isoTextField.text = isoPickerData[row]
+        }
     }
        
     
@@ -215,6 +238,7 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     @objc func doneBtnClicked(_ button: UIBarButtonItem) {
         // iso text field
         isoTextField?.resignFirstResponder()
+        filmTextField?.resignFirstResponder()
     }
     
     // Dismiss date picker
