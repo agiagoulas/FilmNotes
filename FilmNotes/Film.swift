@@ -12,6 +12,7 @@ import os.log
 class Film: NSObject, NSCoding {
     
     // MARK: Properties
+    // Define variables of Film object
     var name: String
     var photo: UIImage?
     var event: String
@@ -22,10 +23,12 @@ class Film: NSObject, NSCoding {
     var notes: String
     
     // MARK: Archiving Path
+    // Set ArchivingPath for persistant storing of Film object
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("films")
     
     // MARK: Types
+    // Create strukture to store key strings of Film object
     struct PropertyKey {
         static let name = "name";
         static let photo = "photo";
@@ -38,11 +41,11 @@ class Film: NSObject, NSCoding {
     }
     
     // MARK: Initialization
+    // Initialize Film object - check if event is empty
     init?(name: String, photo: UIImage?, event: String, camera: String, iso: String, location: String, date: String, notes: String) {
         guard !event.isEmpty else {
             return nil
         }
-        
         self.name = name
         self.photo = photo
         self.event = event
@@ -54,6 +57,7 @@ class Film: NSObject, NSCoding {
     }
     
     // MARK: NSCoding
+    // Perpare data to be initialized with NSCoder
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: PropertyKey.name)
         aCoder.encode(photo, forKey: PropertyKey.photo)
@@ -65,14 +69,15 @@ class Film: NSObject, NSCoding {
         aCoder.encode(notes, forKey: PropertyKey.notes)
     }
     
+    // Initializer for Film object
     required convenience init?(coder aDecoder: NSCoder){
-        // The name is required. If we cannot decode a event string, the initializer should fail.
+        // Event is required - if empty, initializer fails
         guard let event = aDecoder.decodeObject(forKey: PropertyKey.event) as? String else {
             os_log("Unable to decode the event for a Film object.", log: OSLog.default, type: .debug)
             return nil
         }
        
-        // Conditional casts
+        // Conditional casts for optional variables
         let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage
         let name = aDecoder.decodeObject(forKey: PropertyKey.name) as? String ?? ""
         let camera = aDecoder.decodeObject(forKey: PropertyKey.camera) as? String ?? ""
@@ -82,7 +87,7 @@ class Film: NSObject, NSCoding {
         let notes = aDecoder.decodeObject(forKey: PropertyKey.notes) as? String ?? ""
         
                       
-        // Must call designated initializer.
+        // call designated initializer
         self.init(name: name, photo: photo, event: event, camera: camera, iso: iso, location: location, date: date, notes: notes)
     }
     

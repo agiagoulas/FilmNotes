@@ -11,6 +11,7 @@ import UIKit
 class FilmTableViewCell: UITableViewCell {
 
     // MARK: Properties
+    // Connect storyboard to code
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var eventLabel: UILabel!
@@ -20,13 +21,11 @@ class FilmTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        // Configure view for selected state
     }
 
 }
