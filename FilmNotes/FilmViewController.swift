@@ -9,19 +9,28 @@
 import UIKit
 import os.log
 
-class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
     // MARK: Properties
     @IBOutlet weak var filmTextField: UITextField!
     @IBOutlet weak var filmImageView: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var ISOPicker: UIPickerView!
+    
+    var isoPickerData: [String] = [String]()
+    
     
     // value either passed by "FilmTableViewController" in "prepare(for:sender)" or constructed as part of adding new film
     var film: Film?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Setup ISO Picker
+        self.ISOPicker.delegate = self
+        self.ISOPicker.dataSource = self
+        isoPickerData = ["12", "25", "50", "100", "125", "200", "400", "800", "1600", "3200", "6400"]
+        
         // Handle user input
         filmTextField.delegate = self;
         
@@ -35,6 +44,33 @@ class FilmViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         // enable save button only if text field has valid film name
         updateSaveButtonState()
     }
+    
+    // MARK: UIPickerView
+    override func didReceiveMemoryWarning() {
+           super.didReceiveMemoryWarning()
+           // Dispose of any resources that can be recreated.
+       }
+
+    // Number of columns of data
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return isoPickerData.count
+    }
+       
+    // The data to return fopr the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return isoPickerData[row]
+    }
+    
+    // Capture picker view selection
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(isoPickerData[row])
+    }
+       
     
     // MARK: UITextFieldDelegate
     
