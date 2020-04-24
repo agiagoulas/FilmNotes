@@ -62,7 +62,7 @@ class Film: NSObject, NSCoding {
         aCoder.encode(iso, forKey: PropertyKey.iso)
         aCoder.encode(location, forKey: PropertyKey.location)
         aCoder.encode(date, forKey: PropertyKey.date)
-        aCoder.encode(date, forKey: PropertyKey.notes)
+        aCoder.encode(notes, forKey: PropertyKey.notes)
     }
     
     required convenience init?(coder aDecoder: NSCoder){
