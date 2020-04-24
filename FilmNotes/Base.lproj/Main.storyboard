@@ -161,7 +161,6 @@
                                     <constraint firstAttribute="trailing" secondItem="RO9-J5-kfv" secondAttribute="trailing" id="Oao-g9-fq6"/>
                                     <constraint firstItem="RO9-J5-kfv" firstAttribute="top" secondItem="6DF-nK-gSk" secondAttribute="bottom" constant="8" id="QoM-rY-f5i"/>
                                     <constraint firstItem="rVo-NP-V0B" firstAttribute="leading" secondItem="i6d-7l-oLV" secondAttribute="leading" id="R7J-7t-bei"/>
-                                    <constraint firstItem="h3s-lT-CNa" firstAttribute="top" secondItem="rVo-NP-V0B" secondAttribute="bottom" constant="8" id="Z4V-dc-9yP"/>
                                     <constraint firstAttribute="trailing" secondItem="rVo-NP-V0B" secondAttribute="trailing" id="ZxX-nG-Jn4"/>
                                     <constraint firstItem="sv5-mb-cCf" firstAttribute="leading" secondItem="i6d-7l-oLV" secondAttribute="leading" id="dJY-aB-c9S"/>
                                     <constraint firstAttribute="trailing" secondItem="sv5-mb-cCf" secondAttribute="trailing" id="evN-fz-cwu"/>
@@ -187,7 +186,7 @@
                                     <outletCollection property="gestureRecognizers" destination="00N-sK-j9A" appends="YES" id="ttN-HM-fhl"/>
                                 </connections>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click icon to select custom image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIO-sc-ltl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click icon to select custom image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIO-sc-ltl">
                                 <rect key="frame" x="105.5" y="510" width="203.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
@@ -196,13 +195,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="YIO-sc-ltl" firstAttribute="top" secondItem="0dY-Bu-jCm" secondAttribute="bottom" constant="8" id="5J3-Zt-41z"/>
+                            <constraint firstItem="YIO-sc-ltl" firstAttribute="top" secondItem="0dY-Bu-jCm" secondAttribute="bottom" constant="8" id="3LF-7L-ZOC"/>
+                            <constraint firstItem="0dY-Bu-jCm" firstAttribute="top" secondItem="i6d-7l-oLV" secondAttribute="bottom" constant="8" id="71y-fO-MKd"/>
+                            <constraint firstItem="0dY-Bu-jCm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FzD-dP-3NE"/>
                             <constraint firstItem="i6d-7l-oLV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="HtM-CN-8at"/>
                             <constraint firstItem="i6d-7l-oLV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="SIG-e7-Q6x"/>
-                            <constraint firstItem="0dY-Bu-jCm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SIs-eh-ewe"/>
-                            <constraint firstItem="0dY-Bu-jCm" firstAttribute="top" secondItem="i6d-7l-oLV" secondAttribute="bottom" constant="8" id="e4f-Ll-qsI"/>
+                            <constraint firstItem="YIO-sc-ltl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="h5J-fk-CrM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="i6d-7l-oLV" secondAttribute="trailing" constant="20" id="jbc-Po-Xhq"/>
-                            <constraint firstItem="YIO-sc-ltl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uGd-gb-jZW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
